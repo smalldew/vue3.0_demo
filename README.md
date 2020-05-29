@@ -1,7 +1,6 @@
 # vue3.0_demo
 
-
-## Project setup
+### Project setup
 ```
 npm install
 ```

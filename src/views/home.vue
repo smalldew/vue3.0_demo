@@ -1,30 +1,30 @@
-<template>
-  <div class="hello">
-    <h1>count++: {{ count }}</h1>
-    <h1>double count: {{ doubleCount }}</h1>
-    <button @click="add">增加</button>
-    <button @click="clear">清零</button>
-
-    <div class="show">
-      <button @click="show">{{ showText }}</button>
-      <button @click="transfer">传送参数</button>
-      <h3 v-if="data.isShow">这个模块展示隐藏，用按钮控制</h3>
-    </div>
-  </div>
+<template lang="pug">
+.app
+  .avatar(@click="clickMy") {{name}}
+  h1 count++: {{ count }}
+  h1 double count: {{ doubleCount }}
+  button(@click="add") 增加
+  button(@click="transfer") 传送参数
+  button(@click="clear") 清零  
+  
+  .show
+    button(@click="show") {{ showText }}
+    h3(v-if="isShow") 这个模块展示隐藏，用按钮控制
 </template>
 
 <script>
 import { ref, watch, computed, getCurrentInstance } from 'vue'
+import { useStore } from 'vuex'
+import { useRouter, useRoute } from 'vue-router'
 
 export default {
-  name: 'HelloWorld',
-  props: {
-    data: {
-      isShow: false
-    }
-  },
   setup(props, { emit }) {
+    const store = useStore()
+    const router = useRouter()
+
+    const name = store.getters.getUserInfo
     const count = ref(0)
+    let isShow = ref(false)
     let showText = ref('展示')
     
     // 函数方法
@@ -36,14 +36,22 @@ export default {
       transfer()
     }
     const show = () => {
-      emit('clickShow', !props.data.isShow)
+      isShow.value = !isShow.value
     }
     const transfer = () => {
       emit('clickTransfer', count)
+      // 子组件像父组件增加参数
+    }
+
+    const clickMy = () => {
+      router.push({
+        path: '/my',
+        query: {id: 4}
+      })
     }
     // 观察方法
     watch(
-      () => props.data.isShow,
+      () => isShow,
       val => {
         if (val) {
           showText.value = '隐藏'
@@ -56,12 +64,15 @@ export default {
     let doubleCount = computed(() => count.value * 2)
 
     return {
+      name,
       count,
       doubleCount,
       showText,
+      isShow,
       add,
       clear,
       transfer,
+      clickMy,
       show
     }
   }
@@ -87,4 +98,14 @@ button::after
   border none
 .show
   margin-top 10px
+.avatar
+  width 100px
+  height 50px
+  position absolute
+  top 0
+  right 0
+  background #F3F3F3
+  display flex
+  align-items center
+  justify-content center
 </style>
