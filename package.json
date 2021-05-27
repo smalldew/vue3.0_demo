@@ -1,31 +1,24 @@
 {
-  "name": "vue3.0",
-  "version": "0.1.0",
-  "private": true,
+  "name": "vite-project",
+  "version": "0.0.0",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
   },
   "dependencies": {
     "core-js": "^3.6.4",
-    "vue": "^3.0.0-beta.14",
-    "vue-router": "^4.0.0-alpha.12",
-    "vuex": "^4.0.0-beta.2"
+    "vue": "3.0.5",
+    "vue-router": "4.0.8",
+    "vuex": "4.0.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.3.0",
-    "@vue/cli-service": "~4.3.0",
-    "@vue/compiler-sfc": "^3.0.0-beta.1",
+    "@vitejs/plugin-vue": "^1.2.2",
+    "@vue/compiler-sfc": "^3.0.5",
+    "vite": "^2.3.3",
     "pug": "^2.0.0",
     "pug-plain-loader": "^1.0.0",
     "stylus": "^0.54.7",
-    "stylus-loader": "^3.0.2",
-    "vue-cli-plugin-vue-next": "~0.1.3",
-    "vue-template-compiler": "^2.6.11"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+    "stylus-loader": "^3.0.2"
+  }
 }

@@ -1,30 +1,23 @@
 <template lang="pug">
 #app
   router-view
-  bottom-nav 
+  BottomNav 
 </template>
 
-<script>
-import BottomNav from '@/components/nav/bottomNav'
+<script setup>
+import BottomNav from "./components/nav/bottomNav.vue"
 
-export default {
-  name: 'App',
-  components: {
-    BottomNav
-  }
-}
+// This starter template is using Vue 3 experimental <script setup> SFCs
+// Check out https://github.com/vuejs/rfcs/blob/script-setup-2/active-rfcs/0000-script-setup.md
 </script>
 
-<style lang="stylus">
-#app
-  font-family Avenir, Helvetica, Arial, sans-serif
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
-  text-align center
-  color #2c3e50
-  margin-top 60px
-  body
-    background #f6f6f6
-  #box
-    overflow-x hidden
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
 </style>

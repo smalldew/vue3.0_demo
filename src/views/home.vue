@@ -12,71 +12,52 @@
     h3(v-if="isShow") 这个模块展示隐藏，用按钮控制
 </template>
 
-<script>
-import { ref, watch, computed, getCurrentInstance } from 'vue'
-import { useStore } from 'vuex'
-import { useRouter, useRoute } from 'vue-router'
+<script setup>
+import { ref, reactive, watch, computed, getCurrentInstance } from "vue"
+import { useStore } from "vuex"
+import { useRouter, useRoute } from "vue-router"
 
-export default {
-  setup(props, { emit }) {
-    const store = useStore()
-    const router = useRouter()
+const store = useStore()
+const router = useRouter()
+const name = store.getters.getUserInfo
+let count = ref(0)
+let isShow = ref(false)
+let showText = ref("展示")
 
-    const name = store.getters.getUserInfo
-    const count = ref(0)
-    let isShow = ref(false)
-    let showText = ref('展示')
-    
-    // 函数方法
-    const add = () => {
-      count.value++
-    }
-    const clear = () => {
-      count.value = 0;
-      transfer()
-    }
-    const show = () => {
-      isShow.value = !isShow.value
-    }
-    const transfer = () => {
-      emit('clickTransfer', count)
-      // 子组件像父组件增加参数
-    }
-
-    const clickMy = () => {
-      router.push({
-        path: '/my',
-        query: {id: 4}
-      })
-    }
-    // 观察方法
-    watch(
-      () => isShow,
-      val => {
-        if (val) {
-          showText.value = '隐藏'
-        } else {
-          showText.value = '展示'
-        }
-      }
-    )
-    // 计算方法
-    let doubleCount = computed(() => count.value * 2)
-
-    return {
-      name,
-      count,
-      doubleCount,
-      showText,
-      isShow,
-      add,
-      clear,
-      transfer,
-      clickMy,
-      show
+// 函数方法
+const add = () => {
+  count.value++
+}
+const clear = () => {
+  count.value = 0
+  transfer()
+}
+const show = () => {
+  isShow.value = !isShow.value
+}
+const transfer = () => {
+  // emit("clickTransfer", count)
+  // 子组件像父组件增加参数
+}
+const clickMy = () => {
+  router.push({
+    path: "/my",
+    query: { id: 4 },
+  })
+}
+// 观察方法
+watch(
+  () => isShow,
+  (val) => {
+    if (val) {
+      showText.value = "隐藏"
+    } else {
+      showText.value = "展示"
     }
   }
-}
+)
+// 计算方法
+let doubleCount = computed(() => count.value * 2)
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -5,30 +5,20 @@
   button(@click="changeName") 更新
 </template>
 
-<script>
-import { ref, reactive } from 'vue'
-import { useStore } from 'vuex'
-import { useRouter, useRoute } from 'vue-router'
+<script setup>
+import { ref, reactive } from "vue"
+import { useStore } from "vuex"
+import { useRouter, useRoute } from "vue-router"
 
-export default {
-  setup() {
-    const store = useStore()
-    const route = useRoute()
-    
-    let name = ref(store.getters.getUserInfo) 
-    let nameText = ref('')
-    
-    const changeName = () => {
-      store.commit('updateUserInfo', nameText.value)
-      name.value = store.getters.getUserInfo
-    }
+const store = useStore()
+const route = useRoute()
 
-    return {
-      name,
-      nameText,
-      changeName
-    }
-  }
+let name = ref(store.getters.getUserInfo)
+let nameText = ref("")
+
+const changeName = () => {
+  store.commit("updateUserInfo", nameText.value)
+  name.value = store.getters.getUserInfo
 }
 </script>
 

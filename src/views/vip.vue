@@ -3,8 +3,6 @@
   .desc 148元终身VIP
 </template>
 
-<script>
-export default {}
-</script>
+<script setup></script>
 
 <style lang="stylus" scoped></style>

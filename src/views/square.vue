@@ -3,12 +3,6 @@
   .desc 广场舞跳起来
 </template>
 
-<script>
-export default {
-    
-}
-</script>
+<script setup></script>
 
-<style lang="stylus" scoped>
-
-</style>
+<style lang="stylus" scoped></style>
