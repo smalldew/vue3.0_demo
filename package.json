@@ -15,7 +15,7 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.2.2",
     "@vue/compiler-sfc": "^3.0.5",
-    "vite": "^2.3.3",
+    "vite": "^2.9.13",
     "pug": "^2.0.0",
     "pug-plain-loader": "^1.0.0",
     "stylus": "^0.54.7",
